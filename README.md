@@ -183,8 +183,7 @@ The empirical factor ranking that underpins the FDSS inputs is reported in:
 
 ## License
 
-Released under the [MIT License](LICENSE) — free for academic and commercial use with attribution.
-
+Released under the (NO LICENSE) — All rights reserved.
 ---
 
 ## Contact
@@ -194,6 +193,6 @@ Department of Architecture and Planning
 National Institute of Technology Patna
 Bihar 800005, India
 📧 poojam.ph21@nitp.ac.in
-🆔 ORCID: 0000-0000-0000-0000
+🆔 ORCID: 
 
 For bugs and feature requests, please open a GitHub issue.
