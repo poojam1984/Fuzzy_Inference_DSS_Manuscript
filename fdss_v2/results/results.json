@@ -1,0 +1,391 @@
+{
+ "cutoffs": [
+  19.737000000000002,
+  54.706,
+  85.0
+ ],
+ "coverage": {
+  "A": 1.0,
+  "B": 1.0,
+  "C": 1.0
+ },
+ "monotonicity_product": {
+  "safety": {
+   "rate": 0.017,
+   "max_drop": 8.554162695512723
+  },
+  "ease": {
+   "rate": 0.021333333333333333,
+   "max_drop": 4.138954886089998
+  },
+  "height": {
+   "rate": 0.023,
+   "max_drop": 6.647015539673866
+  },
+  "reuse": {
+   "rate": 0.023666666666666666,
+   "max_drop": 7.160889222292283
+  },
+  "cost": {
+   "rate": 0.023666666666666666,
+   "max_drop": 7.750379915985626
+  }
+ },
+ "monotonicity_min": {
+  "safety": {
+   "rate": 0.043333333333333335,
+   "max_drop": 15.54274010616777
+  },
+  "ease": {
+   "rate": 0.03933333333333333,
+   "max_drop": 12.460574111075795
+  },
+  "height": {
+   "rate": 0.035,
+   "max_drop": 12.419697639434702
+  },
+  "reuse": {
+   "rate": 0.165,
+   "max_drop": 5.395629716170216
+  },
+  "cost": {
+   "rate": 0.158,
+   "max_drop": 5.437752857599222
+  }
+ },
+ "score_range_random": [
+  8.249999999999996,
+  93.41666666666667
+ ],
+ "score_corners": [
+  8.25,
+  93.41666666666667
+ ],
+ "skfuzzy_stageB_max_abs_diff": 0.0994867290499144,
+ "time_ms_per_alternative": 0.3415142900000774,
+ "time_ms_build_model": 0.17306767000036416,
+ "surface_min_max": [
+  8.25,
+  70.00000000000001
+ ],
+ "sensitivity": {
+  "MF breakpoints \u00b15% of range": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.7765019400141775,
+    "top1_same": 1.0,
+    "mean_abs_change": 1.1821495437810248
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.8752177366838451,
+    "top1_same": 1.0,
+    "mean_abs_change": 1.6580999727974928
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.6956296967783064,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.7200206388652831
+   }
+  },
+  "MF breakpoints \u00b110% of range": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.6363514757341382,
+    "top1_same": 0.9433333333333334,
+    "mean_abs_change": 2.318491555212586
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.857794140689061,
+    "top1_same": 0.835,
+    "mean_abs_change": 3.451635085724985
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.7034806950503368,
+    "top1_same": 0.9683333333333334,
+    "mean_abs_change": 1.7693140047040836
+   }
+  },
+  "Rule weights U(0.7,1)": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.9616435368067782,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.3862651369618374
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.866749905246939,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.41509411973749966
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.6956359380548508,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.02918436272506075
+   }
+  },
+  "Input noise (\u03c3=0.5 rating pts, 10% others)": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.6581021151269069,
+    "top1_same": 0.6816666666666666,
+    "mean_abs_change": 2.213200621908311
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.8256904729552322,
+    "top1_same": 0.7133333333333334,
+    "mean_abs_change": 4.613414803234397
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.6786191462851816,
+    "top1_same": 0.915,
+    "mean_abs_change": 1.888827577157627
+   }
+  },
+  "Classic max\u2013min implication": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.9999999999999999,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.810935673077933
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.8280786712108251,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.5356384929257706
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.41403933560541256,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.2592536745050718
+   }
+  },
+  "All combined (MF \u00b15%, weights, inputs)": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.6199575359199783,
+    "top1_same": 0.6533333333333333,
+    "mean_abs_change": 2.525888071741722
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.8192852093113654,
+    "top1_same": 0.7433333333333333,
+    "mean_abs_change": 4.66503594840353
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.6647569472314113,
+    "top1_same": 0.8833333333333333,
+    "mean_abs_change": 2.1748336827569195
+   }
+  },
+  "Defuzzification: bisector": {
+   "A_10_storey": {
+    "kendall_tau_mean": 0.894427190999916,
+    "top1_same": 1.0,
+    "mean_abs_change": 2.0559109950152106
+   },
+   "B_45_storey": {
+    "kendall_tau_mean": 0.9258200997725515,
+    "top1_same": 1.0,
+    "mean_abs_change": 2.537186991838468
+   },
+   "C_90_storey": {
+    "kendall_tau_mean": 0.8017837257372732,
+    "top1_same": 1.0,
+    "mean_abs_change": 0.8913595703458673
+   }
+  }
+ },
+ "sensitivity_N": 600,
+ "margins": {
+  "A_10_storey": [
+   79.83580293521031,
+   71.0130085043274,
+   70.57511057445502
+  ],
+  "B_45_storey": [
+   93.41666666666667,
+   73.06674863556648,
+   59.17696001786901
+  ],
+  "C_90_storey": [
+   93.41666666666667,
+   70.76482408874188,
+   8.250000000000002
+  ]
+ },
+ "base_scores": {
+  "A_10_storey": [
+   69.61,
+   70.0,
+   71.01,
+   79.84,
+   68.8,
+   70.58
+  ],
+  "B_45_storey": [
+   8.25,
+   8.25,
+   93.42,
+   73.07,
+   8.25,
+   59.18
+  ],
+  "C_90_storey": [
+   8.25,
+   8.25,
+   93.42,
+   70.76,
+   8.25,
+   8.25
+  ]
+ },
+ "ahp_weights": {
+  "safety": 0.419,
+  "ease": 0.16,
+  "height": 0.263,
+  "reuse": 0.097,
+  "cost": 0.062
+ },
+ "ahp_CR": 0.015196485933296635,
+ "benchmark": {
+  "A_10_storey": {
+   "systems": [
+    "Fabric",
+    "Timber",
+    "Aluminium",
+    "Steel",
+    "Plastic",
+    "Tunnel"
+   ],
+   "fdss": [
+    69.6,
+    70.0,
+    71.0,
+    79.8,
+    68.8,
+    70.6
+   ],
+   "ahp": [
+    0.764,
+    0.774,
+    0.899,
+    0.895,
+    0.749,
+    0.814
+   ],
+   "topsis": [
+    0.395,
+    0.398,
+    0.72,
+    0.674,
+    0.41,
+    0.586
+   ],
+   "tau_fdss_ahp": 0.8666666666666666,
+   "tau_fdss_topsis": 0.6,
+   "tau_ahp_topsis": 0.7333333333333333,
+   "top_fdss": "Steel",
+   "top_ahp": "Aluminium",
+   "top_topsis": "Aluminium"
+  },
+  "B_45_storey": {
+   "systems": [
+    "Aluminium",
+    "Steel",
+    "Tunnel"
+   ],
+   "fdss": [
+    93.4,
+    73.1,
+    59.2
+   ],
+   "ahp": [
+    0.921,
+    0.946,
+    0.701
+   ],
+   "topsis": [
+    0.757,
+    0.821,
+    0.055
+   ],
+   "tau_fdss_ahp": 0.33333333333333337,
+   "tau_fdss_topsis": 0.33333333333333337,
+   "tau_ahp_topsis": 1.0,
+   "top_fdss": "Aluminium",
+   "top_ahp": "Steel",
+   "top_topsis": "Steel"
+  },
+  "C_90_storey": {
+   "systems": [
+    "Aluminium",
+    "Steel"
+   ],
+   "fdss": [
+    93.4,
+    70.8
+   ],
+   "ahp": [
+    0.886,
+    0.949
+   ],
+   "topsis": [
+    0.304,
+    0.696
+   ],
+   "tau_fdss_ahp": -1.0,
+   "tau_fdss_topsis": -1.0,
+   "tau_ahp_topsis": 1.0,
+   "top_fdss": "Aluminium",
+   "top_ahp": "Steel",
+   "top_topsis": "Steel"
+  }
+ },
+ "missing": {
+  "0.1": {
+   "FDSS": {
+    "tau": 0.8273011267756141,
+    "top1": 0.8833333333333333,
+    "n": 1200
+   },
+   "AHP": {
+    "tau": 0.8419999999999999,
+    "top1": 0.7441666666666666,
+    "n": 1200
+   },
+   "TOPSIS": {
+    "tau": 0.8349999999999999,
+    "top1": 0.7608333333333334,
+    "n": 1200
+   }
+  },
+  "0.2": {
+   "FDSS": {
+    "tau": 0.7020338667685216,
+    "top1": 0.7685881370091896,
+    "n": 1197
+   },
+   "AHP": {
+    "tau": 0.7532720690615426,
+    "top1": 0.6123642439431913,
+    "n": 1197
+   },
+   "TOPSIS": {
+    "tau": 0.7424672793093845,
+    "top1": 0.6265664160401002,
+    "n": 1197
+   }
+  },
+  "0.3": {
+   "FDSS": {
+    "tau": 0.6217405367288463,
+    "top1": 0.6695059625212947,
+    "n": 1174
+   },
+   "AHP": {
+    "tau": 0.6871095968199886,
+    "top1": 0.5630323679727428,
+    "n": 1174
+   },
+   "TOPSIS": {
+    "tau": 0.6969903463940943,
+    "top1": 0.5817717206132879,
+    "n": 1174
+   }
+  }
+ }
+}

@@ -1,0 +1,233 @@
+{
+ "A_10_storey|Fabric": {
+  "tech": {
+   "Medium": 0.5,
+   "High": 0.5
+  },
+  "life": {
+   "Low": 0.1,
+   "Medium": 0.9
+  },
+  "suit": {
+   "Marginally Suitable": 0.008,
+   "Suitable": 0.748
+  }
+ },
+ "A_10_storey|Timber": {
+  "tech": {
+   "Medium": 0.75,
+   "High": 0.25
+  },
+  "life": {
+   "Medium": 1.0
+  },
+  "suit": {
+   "Suitable": 0.944,
+   "Highly Suitable": 0.0
+  }
+ },
+ "A_10_storey|Aluminium": {
+  "tech": {
+   "Medium": 0.25,
+   "High": 0.5
+  },
+  "life": {
+   "Medium": 0.75,
+   "High": 0.25
+  },
+  "suit": {
+   "Suitable": 0.531,
+   "Highly Suitable": 0.056
+  }
+ },
+ "A_10_storey|Steel": {
+  "tech": {
+   "Medium": 0.25,
+   "High": 0.75
+  },
+  "life": {
+   "Medium": 0.25,
+   "High": 0.75
+  },
+  "suit": {
+   "Suitable": 0.403,
+   "Highly Suitable": 0.597
+  }
+ },
+ "A_10_storey|Plastic": {
+  "tech": {
+   "Medium": 0.5
+  },
+  "life": {
+   "Low": 0.4,
+   "Medium": 0.6,
+   "High": 0.333
+  },
+  "suit": {
+   "Unsuitable": 0.0,
+   "Marginally Suitable": 0.034,
+   "Suitable": 0.966
+  }
+ },
+ "A_10_storey|Tunnel": {
+  "tech": {
+   "Medium": 0.75,
+   "High": 0.25
+  },
+  "life": {
+   "High": 1.0
+  },
+  "suit": {
+   "Suitable": 0.944,
+   "Highly Suitable": 0.056
+  }
+ },
+ "B_45_storey|Fabric": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Low": 0.25,
+   "Medium": 0.75
+  },
+  "suit": {
+   "Unsuitable": 0.944
+  }
+ },
+ "B_45_storey|Timber": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Low": 0.1,
+   "Medium": 0.9
+  },
+  "suit": {
+   "Unsuitable": 0.992
+  }
+ },
+ "B_45_storey|Aluminium": {
+  "tech": {
+   "High": 0.75
+  },
+  "life": {
+   "High": 1.0
+  },
+  "suit": {
+   "Highly Suitable": 1.0
+  }
+ },
+ "B_45_storey|Steel": {
+  "tech": {
+   "High": 1.0
+  },
+  "life": {
+   "Medium": 0.5,
+   "High": 0.5
+  },
+  "suit": {
+   "Suitable": 0.748,
+   "Highly Suitable": 0.252
+  }
+ },
+ "B_45_storey|Plastic": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Low": 0.5,
+   "Medium": 0.5,
+   "High": 0.4
+  },
+  "suit": {
+   "Unsuitable": 0.94
+  }
+ },
+ "B_45_storey|Tunnel": {
+  "tech": {
+   "Low": 0.5,
+   "Medium": 0.5
+  },
+  "life": {
+   "High": 1.0
+  },
+  "suit": {
+   "Unsuitable": 0.252,
+   "Suitable": 0.748
+  }
+ },
+ "C_90_storey|Fabric": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Low": 0.4,
+   "Medium": 0.6
+  },
+  "suit": {
+   "Unsuitable": 0.845
+  }
+ },
+ "C_90_storey|Timber": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Low": 0.25,
+   "Medium": 0.75
+  },
+  "suit": {
+   "Unsuitable": 0.944
+  }
+ },
+ "C_90_storey|Aluminium": {
+  "tech": {
+   "High": 1.0
+  },
+  "life": {
+   "High": 1.0
+  },
+  "suit": {
+   "Highly Suitable": 1.0
+  }
+ },
+ "C_90_storey|Steel": {
+  "tech": {
+   "Medium": 0.464,
+   "High": 0.536
+  },
+  "life": {
+   "Medium": 0.75,
+   "High": 0.25
+  },
+  "suit": {
+   "Suitable": 0.707,
+   "Highly Suitable": 0.056
+  }
+ },
+ "C_90_storey|Plastic": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Low": 0.5,
+   "Medium": 0.5,
+   "High": 0.25
+  },
+  "suit": {
+   "Unsuitable": 0.848
+  }
+ },
+ "C_90_storey|Tunnel": {
+  "tech": {
+   "Low": 1.0
+  },
+  "life": {
+   "Medium": 0.25,
+   "High": 0.75
+  },
+  "suit": {
+   "Unsuitable": 0.597
+  }
+ }
+}
