@@ -1,198 +1,45 @@
 # FDSS-Formwork
 
-**A Mamdani Fuzzy Inference Decision-Support System for Formwork and Equipment Selection in High-Rise Construction**
+A Mamdani fuzzy inference decision-support system (FDSS) for formwork and equipment selection in high-rise construction.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+This repository contains the Python implementation of the FDSS described in:
 
-This repository contains the open-source Python implementation of the Mamdani fuzzy inference decision-support system (FDSS) described in:
+> Mishra, P., Rajak, F. and Kumar, R. A Mamdani fuzzy inference decision-support system for formwork and equipment selection in high-rise construction. Civil Engineering and Architecture (Horizon Research Publishing), manuscript ID 14846492, under review.
 
-> Mishra, P., Rajak, F. and Kumar, R. (2026). *A Mamdani fuzzy inference decision-support system for formwork and equipment selection in high-rise construction*. Submitted to **Automation in Construction**.
+Version 2.0 (revised submission). This version reproduces every case score, figure and sensitivity value reported in the revised manuscript.
 
-The FDSS converts five top-ranked linguistic selection criteria — safety performance, ease of installation, height capability, reusability and operational cost — into a defuzzified suitability score (0–100) for any candidate formwork system, in under 50 ms per evaluation.
+## What the code does
 
----
+- Five inputs: safety performance, ease of installation, height capability, reusability and operational cost.
+- Height enters as the capability ratio rho = H_cap / H_req (system height capability divided by the project's required height), capped at 3.
+- In rules R3, R4 and R7, "Height = Sufficient" is read as "at least Sufficient", and in R3 and R4 "(Ease/Reuse/Cost = Moderate)" is read as "at least Moderate".
+- Triangular membership functions with the (a, b, c) parameters in Table 3 of the paper (`src/membership_functions.py`).
+- Eight weighted IF-THEN rules from Table 4 (`src/rule_base.py`). R1 and R2 are veto rules with negative weights.
+- Weighted Mamdani max-min inference and centroid defuzzification, following Equations (4)-(8) of the paper (`src/fdss.py`).
+- One-at-a-time ±20% rule-weight sensitivity analysis, computed by the model rather than entered by hand (`src/sensitivity.py`).
 
-## Why this repository exists
+The case-study inputs in `data/case_studies.csv` are illustrative values, not field-measured project data. No expert panel has ranked these cases. Reuse counts follow published typical values (see Appendix Table A1 of the paper); safety, ease and cost ratings and system height capabilities are the authors' illustrative assumptions. Inputs outside a variable's range are clipped to the range limit (e.g. 475 reuses is read as 260).
 
-Formwork and lifting-equipment selection in tall buildings is dominated by linguistic, expert-judgement inputs ("the safety performance is good", "the height capability is sufficient") that classical AHP/TOPSIS methods cannot handle natively. This FDSS:
-
-- Uses **triangular membership functions** calibrated from a 421-respondent industry survey (Mishra, 2025)
-- Combines **eight expert-weighted IF–THEN rules** through Mamdani max–min inference
-- Applies **centroid defuzzification** to produce a crisp suitability score
-- Is compared **qualitatively against AHP and TOPSIS** on an illustrative six-option, three-case problem to highlight methodological differences in handling linguistic inputs
-
-> **Note on validation.** The case-study inputs in `data/case_studies.csv` are illustrative parameter vectors used to demonstrate the inference engine; they are not field-measured project data. No expert panel has yet ranked these cases. Formal empirical validation against an independent expert panel or completed projects is identified in the paper as the most important direction for follow-up work.
-
----
-
-## Repository structure
-
-```
-fdss-formwork/
-├── README.md                  # this file
-├── LICENSE                    # MIT License
-├── CITATION.cff               # how to cite this software
-├── requirements.txt           # Python dependencies
-├── .gitignore
-├── src/
-│   ├── fdss.py                # core fuzzy inference system
-│   ├── membership_functions.py# triangular MF definitions
-│   ├── rule_base.py           # the 8 weighted IF-THEN rules
-│   ├── benchmark_ahp.py       # AHP comparison implementation
-│   ├── benchmark_topsis.py    # TOPSIS comparison implementation
-│   └── sensitivity.py         # ±20% rule-weight sensitivity analysis
-├── data/
-│   ├── case_studies.csv       # 10/45/90-storey illustrative input vectors
-│   └── survey_top5.csv        # Top-5 RII factors from N=421 survey (Mishra, 2025)
-├── figures/
-│   └── (PNG outputs generated by the scripts)
-├── tests/
-│   └── test_fdss.py           # unit tests for the inference engine
-└── docs/
-    └── methodology.md         # extended methodological notes
-```
-
----
-
-## Quick start
-
-### 1. Install
+## Run
 
 ```bash
-git clone https://github.com/poojam-nitp/fdss-formwork.git
-cd fdss-formwork
-python -m venv venv
-source venv/bin/activate          # on Windows: venv\Scripts\activate
 pip install -r requirements.txt
+python -m src.fdss          # case-study scores
+python -m src.sensitivity   # ±20% sensitivity table
+cd figures && python make_figures.py && cd ..   # Figures 1, 5 and 6
+pytest tests -q             # unit tests
 ```
 
-### 2. Run the three case studies
+Every result printed by these scripts is computed by the code. No result values are hard-coded.
 
-```bash
-python src/fdss.py
-```
+## Data
 
-Expected output:
-
-```
-=== FDSS Case Study Evaluations ===
-Case A — 10-storey residential block
-  Fabric form .............. 78.4  (Suitable)
-  Timber ................... 72.1  (Suitable)
-  Aluminium ................ 65.3  (Marginally Suitable)
-  Steel .................... 58.7  (Marginally Suitable)
-  Plastic .................. 70.5  (Suitable)
-  Tunnel ................... 42.1  (Marginally Suitable)
-
-Case B — 45-storey mixed-use tower
-  Aluminium ................ 82.0  (Highly Suitable)
-  ...
-
-Case C — 90-storey supertall
-  Aluminium ................ 88.5  (Highly Suitable)
-  Steel .................... 84.2  (Highly Suitable)
-  ...
-```
-
-### 3. Run the sensitivity analysis
-
-```bash
-python src/sensitivity.py
-```
-
-Generates `figures/sensitivity_swing.png` and prints the ±20% rule-weight perturbation table.
-
-### 4. Reproduce the AHP / TOPSIS benchmark
-
-```bash
-python src/benchmark_ahp.py
-python src/benchmark_topsis.py
-```
-
-### 5. Run the unit tests
-
-```bash
-pytest tests/ -v
-```
-
----
-
-## Inputs and outputs
-
-| Variable | Range | Linguistic terms |
-| --- | --- | --- |
-| Safety performance | 1–10 | Poor, Average, Good |
-| Ease of installation | 1–10 | Difficult, Moderate, Easy |
-| Height capability | 0–800 m | Insufficient, Sufficient, Optimal |
-| Reusability | 0–260 cycles | Low, Moderate, High |
-| Operational cost | USD 0–130/hour | Low, Moderate, High |
-| **Suitability (output)** | **0–100** | **Unsuitable, Marginally Suitable, Suitable, Highly Suitable** |
-
-Full (a, b, c) triangular MF parameters are listed in Table 2 of the manuscript and encoded in `src/membership_functions.py`.
-
----
-
-## Rule base
-
-| # | Rule | Weight |
-| --- | --- | --- |
-| R1 | IF Safety = Poor THEN Suitability = Unsuitable | −1.0 |
-| R2 | IF Height = Insufficient THEN Suitability = Unsuitable | −1.0 |
-| R3 | IF Safety = Average AND Height = Sufficient AND (Ease/Reuse/Cost = Moderate) THEN Marginally Suitable | +0.6 |
-| R4 | IF Safety = Good AND Height = Sufficient AND (Ease/Reuse/Cost = Moderate) THEN Suitable | +0.8 |
-| R5 | IF Safety = Good AND Height = Optimal AND Ease = Easy AND Reuse = High AND Cost = Low THEN Highly Suitable | +1.0 |
-| R6 | IF Safety = Good AND Height = Optimal AND (Ease = Easy OR Reuse = High OR Cost = Low) THEN Suitable | +0.9 |
-| R7 | IF Safety = Average AND Height = Sufficient AND Ease = Difficult AND Reuse = Low AND Cost = High THEN Marginally Suitable | +0.4 |
-| R8 | IF Safety = Good AND Height = Optimal AND Ease = Moderate AND Reuse = Moderate AND Cost = Moderate THEN Suitable | +0.8 |
-
-R1 and R2 act as hard veto conditions with negative weight.
-
----
-
-## Citing this software
-
-If you use this code in your research, please cite both the software (via Zenodo DOI) and the paper. A machine-readable citation file (`CITATION.cff`) is included in the repository — GitHub will surface it as a "Cite this repository" button.
-
-```
-Mishra, P., Rajak, F. and Kumar, R. (2026). FDSS-Formwork:
-A Mamdani Fuzzy Inference Decision-Support System for
-Formwork and Equipment Selection in High-Rise Construction
-(v1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.PLACEHOLDER
-```
-
----
-
-## Reproducibility
-
-- Tested on Python 3.10, 3.11 and 3.12
-- All random seeds are fixed (`np.random.seed(42)`)
-- Sensitivity analysis Monte-Carlo runs use 1 000 iterations
-- Expected runtime on a standard laptop: <2 seconds for the three case studies
-
----
-
-## Related publication (companion paper)
-
-The empirical factor ranking that underpins the FDSS inputs is reported in:
-
-> Mishra, P., Rajak, F. and Kumar, R. (2026). *Critical factors for formwork and equipment selection in Indian high-rise construction: a multivariate analysis of 421 expert responses*. Submitted to **Engineering, Construction and Architectural Management**.
-
----
+`data/survey_top5.csv` lists the five top-ranked factors and their Relative Importance Index values from the authors' questionnaire survey (Mishra, 2025, Ph.D. thesis, NIT Patna, http://hdl.handle.net/10603/619616).
 
 ## License
 
-Released under the (NO LICENSE) — All rights reserved.
----
+MIT License. See `LICENSE`.
 
 ## Contact
 
-**Pooja Mishra** (corresponding author)
-Department of Architecture and Planning
-National Institute of Technology Patna
-Bihar 800005, India
-📧 poojam.ph21@nitp.ac.in
-🆔 ORCID: 
-
-For bugs and feature requests, please open a GitHub issue.
+Pooja Mishra (corresponding author), Department of Architecture and Planning, National Institute of Technology Patna, Bihar 800005, India. poojam.ph21@nitp.ac.in
